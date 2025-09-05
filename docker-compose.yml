@@ -1,0 +1,13 @@
+version: '3.0'
+services:
+  musabi:
+    container_name: musabidb2024 # コンテナにつけたい名前
+    image: yamakk/musabi_jupyter:2024-05 # docker pull してきたイメージ名
+    ports:
+     - "80:8888" # 起動するポート
+    volumes:
+     - $PWD:/home/jovyan # ホストとコンテナで共有するディレクトリ
+    restart: always # ホストOSが起動するタイミングで起動する
+    command: >
+      start-notebook.sh
+      --NotebookApp.password='sha1:b86ed4b6f6fb:f87fdd862887a65a018c1a73fe13029efc9f3aed'
